@@ -1,10 +1,6 @@
-<template>
-  <DynamicForm v-model="data" :json-schema="jsonSchema" />
-</template>
-
 <script setup lang='ts'>
+import DynamicForm from '@/components/DynamicForm/index.vue'
 import { ref, watch } from 'vue'
-import DynamicForm from './components/DynamicForm/index.vue'
 
 const jsonSchema = [
   {
@@ -15,11 +11,12 @@ const jsonSchema = [
     key: 'name',
     attrs: {
       placeholder: '请输入',
-      class: ['aaa', 'bbb']
+      class: ['aaa', 'bbb'],
     },
     showRules: [],
-    isShow: true
-  }, {
+    isShow: true,
+  },
+  {
     component: 'DTimePicker',
     id: '2222',
     label: '时间选择器',
@@ -29,7 +26,7 @@ const jsonSchema = [
       'placeholder': '请选择时间',
       'format': 'HH:mm:ss',
       'date-format': 'HH:mm:ss',
-      'value-format': 'HH:mm:ss'
+      'value-format': 'HH:mm:ss',
     },
     showRules: {
       or: [],
@@ -37,11 +34,11 @@ const jsonSchema = [
         field: '1111',
         logic: '=',
         type: 'string',
-        value: '123'
-      }]
+        value: '123',
+      }],
     },
-    isShow: true
-  }
+    isShow: true,
+  },
 ]
 
 const data = ref({})
@@ -51,6 +48,12 @@ watch(() => data.value, (newVal) => {
 })
 </script>
 
-<style>
+<template>
+  <DynamicForm v-model="data" :json-schema="jsonSchema" />
+  <span class="block text-red mdi:account-circle" />
+  <div class="text-red">
+    asdf
+  </div>
+</template>
 
-</style>
+<style></style>
